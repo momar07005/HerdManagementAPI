@@ -10,7 +10,16 @@
     <Folder Include="Entities\" />
     <Folder Include="Enums\" />
     <Folder Include="Exceptions\" />
-    <Folder Include="ValueObjects\" />
+    <Folder Include="Entities\Feeding\" />
+    <Folder Include="Entities\Herd\" />
+    <Folder Include="Entities\Reproduction\" />
+    <Folder Include="Entities\SpecieBreed\" />
+    <Folder Include="Entities\User\" />
+    <Folder Include="ValueObjects\Feeding\" />
+    <Folder Include="ValueObjects\Herd\" />
+    <Folder Include="ValueObjects\Reproduction\" />
+    <Folder Include="ValueObjects\SpecieBreed\" />
+    <Folder Include="ValueObjects\User\" />
   </ItemGroup>
 
 </Project>

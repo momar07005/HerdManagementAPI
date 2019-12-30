@@ -23,6 +23,11 @@
     <Folder Include="Common\Interfaces\" />
     <Folder Include="Common\Mappings\" />
     <Folder Include="Common\Models\" />
+    <Folder Include="Herd\" />
+    <Folder Include="Feeding\" />
+    <Folder Include="User\" />
+    <Folder Include="SpecieBreed\" />
+    <Folder Include="Reproduction\" />
   </ItemGroup>
 
 </Project>
