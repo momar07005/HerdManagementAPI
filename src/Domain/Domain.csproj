@@ -7,11 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Enums\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Entities\Feeding\" />
-    <Folder Include="Entities\Herd\" />
     <Folder Include="Entities\Reproduction\" />
     <Folder Include="Entities\SpecieBreed\" />
     <Folder Include="Entities\User\" />
