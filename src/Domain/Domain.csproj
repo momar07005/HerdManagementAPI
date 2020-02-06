@@ -7,15 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Exceptions\" />
-    <Folder Include="Entities\Feeding\" />
-    <Folder Include="Entities\SpecieBreed\" />
-    <Folder Include="Entities\User\" />
-    <Folder Include="ValueObjects\Feeding\" />
-    <Folder Include="ValueObjects\Herd\" />
-    <Folder Include="ValueObjects\Reproduction\" />
-    <Folder Include="ValueObjects\SpecieBreed\" />
-    <Folder Include="ValueObjects\User\" />
+    <Folder Include="Feeding\Entities\" />
+    <Folder Include="Feeding\Enumerations\" />
+    <Folder Include="Feeding\Exceptions\" />
+    <Folder Include="Feeding\Repository\" />
+    <Folder Include="Feeding\Service\" />
+    <Folder Include="Feeding\ValueObjects\" />
+    <Folder Include="Herd\Exceptions\" />
+    <Folder Include="Herd\Enumerations\" />
+    <Folder Include="Herd\Service\" />
+    <Folder Include="Herd\ValueObjects\" />
+    <Folder Include="Reproduction\Exceptions\" />
+    <Folder Include="Reproduction\Repository\" />
+    <Folder Include="Reproduction\Service\" />
+    <Folder Include="Reproduction\ValueObjects\" />
+    <Folder Include="SpecieBreed\Enumerations\" />
+    <Folder Include="SpecieBreed\Exceptions\" />
+    <Folder Include="SpecieBreed\Repository\" />
+    <Folder Include="SpecieBreed\Service\" />
+    <Folder Include="SpecieBreed\ValueObjects\" />
+    <Folder Include="Herd\Repository\" />
+    <Folder Include="User\Entities\" />
+    <Folder Include="User\Exceptions\" />
+    <Folder Include="User\Repository\" />
+    <Folder Include="User\Service\" />
+    <Folder Include="User\ValueObjects\" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,9 @@
-﻿using HerdManagement.Domain.Enums;
+﻿using HerdManagement.Domain.Reproduction.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HerdManagement.Domain.Entities.Reproduction
+namespace HerdManagement.Domain.Reproduction.Entities
 {
     public class YoungMale : Animal
     {

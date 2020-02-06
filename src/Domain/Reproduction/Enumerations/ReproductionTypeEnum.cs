@@ -1,4 +1,4 @@
-﻿namespace HerdManagement.Domain.Enums
+﻿namespace HerdManagement.Domain.Reproduction.Enumerations
 {
     public enum ReproductionTypeEnum
     {

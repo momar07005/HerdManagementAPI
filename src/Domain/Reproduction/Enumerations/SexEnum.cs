@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HerdManagement.Domain.Enums
+namespace HerdManagement.Domain.Reproduction.Enumerations
 {
     public enum SexEnum
     {

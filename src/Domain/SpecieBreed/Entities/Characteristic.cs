@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HerdManagement.Domain.Entities.Reproduction
+namespace HerdManagement.Domain.SpecieBreed.Entities
 {
-    public class Calving
+    public class Characteristic
     {
     }
 }

@@ -1,4 +1,4 @@
-﻿using HerdManagement.Application;
+﻿using HerdManagement.Application.Common.Interfaces;
 using HerdManagement.Application.Common.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

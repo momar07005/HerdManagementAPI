@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HerdManagement.Domain.Entities.Reproduction
+namespace HerdManagement.Domain.Reproduction.Entities
 {
     public abstract class AdultAnimal : Animal
     {
