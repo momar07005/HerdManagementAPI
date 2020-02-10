@@ -1,5 +1,6 @@
 ﻿using HerdManagement.Domain.Common;
 using HerdManagement.Domain.Reproduction.Enumerations;
+using HerdManagement.Domain.SpecieBreed.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,7 +23,7 @@ namespace HerdManagement.Domain.Reproduction.Entities
         public virtual uint Weight { get; set; }
         public virtual PresenceStatusEnum PresenceStatus { get; set; }
         public virtual DateTime DeathDate { get; set; }
-        public virtual string Breed { get; set; }
+        public virtual Breed Breed { get; set; }
         public virtual Herd.Entities.Herd Herd { get; set; }
         public virtual string BreedCharacteristics { get; set; }
         public virtual string SpecieCharacteristics { get; set; }

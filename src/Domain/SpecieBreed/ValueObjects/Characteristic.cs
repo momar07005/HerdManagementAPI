@@ -5,21 +5,15 @@ using System.Collections.Generic;
 
 namespace HerdManagement.Domain.SpecieBreed.ValueObjects
 {
-    public class Characteristic : ValueObject
+    public abstract class Characteristic : ValueObject<Breed>
     {
-        public CharacteristicValueTypeEnum valueType { get; set; }
+        public CharacteristicValueTypeEnum valueType { get; protected set; }
 
-        public string Label { get; set; }
+        public string Label { get; protected set; }
 
-        public MeasurementUnit ValueUnit { get; set; }
+        public MeasurementUnit ValueUnit { get; protected set; }
 
-        public string Commentary { get; set; }
+        public string Commentary { get; protected set; }
 
-        protected override IEnumerable<object> GetAtomicValues()
-        {
-            yield return valueType;
-            yield return Label;
-            yield return ValueUnit;
-        }
     }
 }

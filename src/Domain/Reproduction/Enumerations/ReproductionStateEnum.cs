@@ -1,10 +1,10 @@
 ﻿namespace HerdManagement.Domain.Reproduction.Enumerations
 {
-    public enum ReproductionStatusEnum
+    public enum ReproductionStateEnum
     {
         Initial,
-        Avortement,
         Grossesse,
-        EnCours
+        Avortement,
+        ATerme
     }
 }

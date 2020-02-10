@@ -7,6 +7,6 @@ namespace HerdManagement.Domain.Reproduction.Entities
 {
     public class YoungFemale : YoungAnimal
     {
-        public override SexEnum Sex { get => SexEnum.Female; }
+        public override SexEnum Sex { get => SexEnum.Female; }      
     }
 }

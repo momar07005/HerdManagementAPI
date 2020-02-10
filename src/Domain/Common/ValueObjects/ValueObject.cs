@@ -1,61 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace HerdManagement.Domain.Common
 {
     // Learn more: https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/implement-value-objects
-    public abstract class ValueObject
+    public abstract class ValueObject<T> where T: ValueObject<T>
     {
-        protected static bool EqualOperator(ValueObject left, ValueObject right)
+        public override bool Equals(object objectToComparedWith)
         {
-            if (left is null ^ right is null)
-            {
+            var valueObject = objectToComparedWith as T;
+
+            if (ReferenceEquals(valueObject, null))
                 return false;
-            }
 
-            return left?.Equals(right) != false;
+            if (ReferenceEquals(this, valueObject))
+                return true;
+
+            return EqualsCore(valueObject);
         }
 
-        protected static bool NotEqualOperator(ValueObject left, ValueObject right)
-        {
-            return !(EqualOperator(left, right));
-        }
+        public static bool operator ==(ValueObject<T> a, ValueObject<T> b) => a.Equals(b);
 
-        protected abstract IEnumerable<object> GetAtomicValues();
+        public static bool operator !=(ValueObject<T> a, ValueObject<T> b) => !(a == b);
 
-        public override bool Equals(object obj)
-        {
-            if (obj == null || obj.GetType() != GetType())
-            {
-                return false;
-            }
+        public override int GetHashCode() => GetHashCodeCore();
 
-            var other = (ValueObject)obj;
-            var thisValues = GetAtomicValues().GetEnumerator();
-            var otherValues = other.GetAtomicValues().GetEnumerator();
+        protected  abstract bool EqualsCore(T obj);
 
-            while (thisValues.MoveNext() && otherValues.MoveNext())
-            {
-                if (thisValues.Current is null ^ otherValues.Current is null)
-                {
-                    return false;
-                }
-
-                if (thisValues.Current != null &&
-                    !thisValues.Current.Equals(otherValues.Current))
-                {
-                    return false;
-                }
-            }
-
-            return !thisValues.MoveNext() && !otherValues.MoveNext();
-        }
-
-        public override int GetHashCode()
-        {
-            return GetAtomicValues()
-                .Select(x => x != null ? x.GetHashCode() : 0)
-                .Aggregate((x, y) => x ^ y);
-        }
+        protected abstract int GetHashCodeCore();
     }
 }

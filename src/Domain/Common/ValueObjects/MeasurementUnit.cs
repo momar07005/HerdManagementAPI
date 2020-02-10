@@ -4,13 +4,19 @@ using System.Text;
 
 namespace HerdManagement.Domain.Common.ValueObjects
 {
-    public class MeasurementUnit : ValueObject
+    public class MeasurementUnit : ValueObject<MeasurementUnit>
     {
         public string Label { get; set; }
 
-        protected override IEnumerable<object> GetAtomicValues()
+        protected override bool EqualsCore(MeasurementUnit obj)
         {
-            yield return Label;
+            return Label == obj.Label;
         }
+
+        protected override int GetHashCodeCore()
+        {
+            return Label.GetHashCode();
+        }
+
     }
 }

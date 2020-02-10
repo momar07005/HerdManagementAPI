@@ -12,5 +12,7 @@ namespace HerdManagement.Domain.SpecieBreed.Entities
         public TimeSpan ChildhoodDuration { get; set; }
 
         public TimeSpan PregnancyDuration { get; set; }
+
+        public TimeSpan MinimumTimeSpanBetweenCalvingAndHeat { get; set; }
     }
 }

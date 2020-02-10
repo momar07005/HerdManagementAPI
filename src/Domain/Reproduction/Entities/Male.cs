@@ -7,28 +7,16 @@ namespace HerdManagement.Domain.Reproduction.Entities
 {
     public class Male : AdultAnimal
     {
+        /// <summary>
+        /// Animal's sex
+        /// </summary>
         public override SexEnum Sex { get => SexEnum.Male; }
 
-        public ValueObjects.Reproduction Mate(Female female, DateTime date, ReproductionTypeEnum reproductionType, string Commentary)
+        public ValueObjects.Reproduction HasMated(Female female, DateTime date,
+                                              ReproductionTypeEnum type, ReproductionStateEnum status,
+                                              string commentary)
         {   
-            if (CanMate() && female.CanBeMated())
-            {
-                return new ValueObjects.Reproduction
-                {
-                    Female = female,
-                    Male = this,
-                    Type = reproductionType,
-                    Status = ReproductionStatusEnum.Initial,
-                    Date = date,
-                    Commentary = Commentary
-
-                };
-            }
-        }
-
-        private bool CanMate()
-        {
-            throw new NotImplementedException();
+            return new ValueObjects.Reproduction(female, this, date, type, status, commentary);
         }
     }
 }

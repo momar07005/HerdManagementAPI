@@ -6,16 +6,20 @@ using System.Text;
 
 namespace HerdManagement.Domain.SpecieBreed.ValueObjects
 {
-    public class Breed : ValueObject
+    public class Breed : ValueObject<Breed>
     {
-        public string Label { get; set; }
+        public string Label { get; protected set; }
 
-        public Specie Specie { get; set; }
+        public Specie Specie { get; protected set; }
 
-        protected override IEnumerable<object> GetAtomicValues()
+        protected override bool EqualsCore(Breed obj)
         {
-            yield return Label;
-            yield return Specie;
+            return Label == obj.Label && Specie == obj.Specie;
+        }
+
+        protected override int GetHashCodeCore()
+        {
+            return Label.GetHashCode() ^ Specie.GetHashCode();
         }
     }
 }
