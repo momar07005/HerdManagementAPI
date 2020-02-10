@@ -1,6 +1,6 @@
 ﻿namespace HerdManagement.Domain.Reproduction.Enumerations
 {
-    public enum PresenceEnum
+    public enum PresenceStatusEnum
     {
         Alive,
         NaturalDeath,

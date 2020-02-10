@@ -1,11 +1,12 @@
-﻿using HerdManagement.Domain.Reproduction.Enumerations;
+﻿using HerdManagement.Domain.Common;
+using HerdManagement.Domain.Reproduction.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HerdManagement.Domain.Reproduction.Entities
 {
-    public abstract class Animal
+    public abstract class Animal : AuditableEntity
     {
         public Animal()
         {
@@ -19,7 +20,7 @@ namespace HerdManagement.Domain.Reproduction.Entities
         public virtual byte Picture { get; set; }
         public virtual bool Bought { get; set; }
         public virtual uint Weight { get; set; }
-        public virtual PresenceEnum PresenceStatus { get; set; }
+        public virtual PresenceStatusEnum PresenceStatus { get; set; }
         public virtual DateTime DeathDate { get; set; }
         public virtual string Breed { get; set; }
         public virtual Herd.Entities.Herd Herd { get; set; }

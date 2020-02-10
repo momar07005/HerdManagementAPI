@@ -8,5 +8,10 @@ namespace HerdManagement.Domain.Reproduction.Entities
     public class Female : AdultAnimal
     {
         public override SexEnum Sex { get => SexEnum.Female; }
+
+        public bool CanBeMated()
+        {
+            return true;
+        }
     }
 }

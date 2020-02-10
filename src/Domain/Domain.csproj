@@ -20,12 +20,9 @@
     <Folder Include="Reproduction\Exceptions\" />
     <Folder Include="Reproduction\Repository\" />
     <Folder Include="Reproduction\Service\" />
-    <Folder Include="Reproduction\ValueObjects\" />
-    <Folder Include="SpecieBreed\Enumerations\" />
     <Folder Include="SpecieBreed\Exceptions\" />
     <Folder Include="SpecieBreed\Repository\" />
     <Folder Include="SpecieBreed\Service\" />
-    <Folder Include="SpecieBreed\ValueObjects\" />
     <Folder Include="Herd\Repository\" />
     <Folder Include="User\Entities\" />
     <Folder Include="User\Exceptions\" />
