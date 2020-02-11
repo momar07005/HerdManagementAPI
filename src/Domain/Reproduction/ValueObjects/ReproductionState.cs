@@ -1,8 +1,6 @@
 ﻿using HerdManagement.Domain.Common;
 using HerdManagement.Domain.Reproduction.Enumerations;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HerdManagement.Domain.Reproduction.ValueObjects
 {

@@ -9,7 +9,7 @@ namespace HerdManagement.Domain.Reproduction.Entities
 {
     public abstract class Animal : AuditableEntity
     {
-        public Animal()
+        protected Animal()
         {
 
         }

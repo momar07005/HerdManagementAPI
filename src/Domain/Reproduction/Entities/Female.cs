@@ -1,7 +1,6 @@
 ﻿using HerdManagement.Domain.Reproduction.Enumerations;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace HerdManagement.Domain.Reproduction.Entities

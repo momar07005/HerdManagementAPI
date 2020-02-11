@@ -4,7 +4,6 @@ using HerdManagement.Domain.Reproduction.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace HerdManagement.Domain.Reproduction.ValueObjects
 {
@@ -34,7 +33,7 @@ namespace HerdManagement.Domain.Reproduction.ValueObjects
                             ReproductionTypeEnum type, ReproductionStateEnum status,
                             string commentary)
         {
-            if(female != null && date != null && female.CanBeMated(date) && status == ReproductionStateEnum.Initial)
+            if(female != null && female.CanBeMated(date) && status == ReproductionStateEnum.Initial)
             {
                 Female = female;
                 Male = male;
@@ -98,14 +97,11 @@ namespace HerdManagement.Domain.Reproduction.ValueObjects
                             ReproductionTypeEnum type, ReproductionStateEnum status,
                             string commentary)
         {
-            if (female != null && date != null && female.CanBeMated(date) && status == ReproductionStateEnum.Initial)
+            if (female != null && female.CanBeMated(date) && status == ReproductionStateEnum.Initial)
             {
                 return new Reproduction(female, male, date, type, ReproductionStateEnum.Initial, commentary);
             }
-            else
-            {
-                return Reproduction.None;
-            }
+            return Reproduction.None;
         }
 
         /// <summary>
@@ -119,7 +115,7 @@ namespace HerdManagement.Domain.Reproduction.ValueObjects
                    && Male == obj.Male
                    && Female == obj.Female
                    && Type == obj.Type
-                   && States == obj.States;
+                   && Equals(States, obj.States);
         }
 
         /// <summary>
@@ -156,11 +152,7 @@ namespace HerdManagement.Domain.Reproduction.ValueObjects
         /// <returns></returns>
         public Reproduction ToCompleted(DateTime date)
         {
-            if (ActualState.State != ReproductionStateEnum.Gestating)
-            {
-                return Reproduction.None;
-            }
-            return ToNextState(date);
+            return ActualState.State != ReproductionStateEnum.Gestating ? Reproduction.None : ToNextState(date);
         }
 
         /// <summary>

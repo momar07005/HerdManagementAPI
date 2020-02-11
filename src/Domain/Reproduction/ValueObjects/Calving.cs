@@ -1,13 +1,10 @@
 ﻿using HerdManagement.Domain.Common;
 using System;
-using System.Collections.Generic;
 
 namespace HerdManagement.Domain.Reproduction.ValueObjects
 {
     public class Calving : ValueObject<Calving>
     {
-        public Calving() { }
-
         public DateTime Date { get; protected set; }
         public Reproduction Reproduction { get; protected set; }
         public uint NumberOfNewborn { get; protected set; }
