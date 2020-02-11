@@ -3,8 +3,8 @@
     public enum ReproductionStateEnum
     {
         Initial,
-        Grossesse,
-        Avortement,
-        ATerme
+        Gestating,
+        Aborted,
+        Complete
     }
 }

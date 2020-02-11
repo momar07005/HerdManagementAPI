@@ -30,7 +30,7 @@ namespace HerdManagement.Domain.Reproduction.Entities
         }
 
         /// <summary>
-        /// Creates a reproduction between male et female
+        /// Initialize a reproduction between male et female
         /// </summary>
         /// <param name="male"></param>
         /// <param name="date"></param>
@@ -41,7 +41,7 @@ namespace HerdManagement.Domain.Reproduction.Entities
         public ValueObjects.Reproduction HasBeenMated(Male male, DateTime date,ReproductionTypeEnum type,
                                                       ReproductionStateEnum status,string commentary)
         {
-            return new ValueObjects.Reproduction(this, male, date, type, status, commentary);
+            return ValueObjects.Reproduction.Initialize(this, male, date, type, status, commentary);
         }
 
 
