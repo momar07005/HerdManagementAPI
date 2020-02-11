@@ -60,28 +60,37 @@ namespace HerdManagement.Domain.Reproduction.ValueObjects
         /// <param name="type">The type.</param>
         /// <param name="status">The status.</param>
         private Reproduction(Female female, Male male, DateTime date, ReproductionTypeEnum type,
-                            ReproductionStateEnum status) : this(female, male, date, type, status, null) { }
+                            ReproductionStateEnum status) : this(female, male, date, type, status, null) {}
 
-        //private Reproduction(Female female, Male male, DateTime date, ReproductionTypeEnum type,
-        //                    IEnumerable<ReproductionState> states)
-        //{
-        //    if (female != null && date != null && female.CanBeMated(date) && status == ReproductionStateEnum.Initial)
-        //    {
-        //        Female = female;
-        //        Male = male;
-        //        Date = date;
-        //        Type = type;
-        //        States.Append(new ReproductionState(status, date));
-        //        Commentary = commentary;
-        //    }
-        //    else
-        //    {
-        //        Female = null;
-        //        Male = null;
-        //        Date = DateTime.MinValue;
-        //        Type = ReproductionTypeEnum.Artificial;
-        //    }
-        //}
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Reproduction"/> class.
+        /// </summary>
+        /// <param name="female">The female.</param>
+        /// <param name="male">The male.</param>
+        /// <param name="date">The date.</param>
+        /// <param name="type">The type.</param>
+        /// <param name="states">The states.</param>
+        /// <param name="commentary">The commentary.</param>
+        private Reproduction(Female female, Male male, DateTime date, ReproductionTypeEnum type,
+                            IEnumerable<ReproductionState> states, string commentary)
+        {
+            if (female != null && male != null)
+            {
+                Female = female;
+                Male = male;
+                Date = date;
+                Type = type;
+                States = States.Union(states);
+                Commentary = commentary;
+            }
+            else
+            {
+                Female = null;
+                Male = null;
+                Date = DateTime.MinValue;
+                Type = ReproductionTypeEnum.Artificial;
+            }
+        }
 
         /// <summary>
         ///Creates a reproduction with initial state.
@@ -138,11 +147,12 @@ namespace HerdManagement.Domain.Reproduction.ValueObjects
         /// <returns></returns>
         public Reproduction ToGestating(DateTime date)
         {   
-            if(ActualState.State != ReproductionStateEnum.Initial)
+            if(this != None && ActualState.State == ReproductionStateEnum.Initial)
             {
-                return Reproduction.None;
+                return ToNextState(date);
             }
-            return ToNextState(date);
+            return Reproduction.None;
+
         }
 
         /// <summary>
@@ -152,7 +162,7 @@ namespace HerdManagement.Domain.Reproduction.ValueObjects
         /// <returns></returns>
         public Reproduction ToCompleted(DateTime date)
         {
-            return ActualState.State != ReproductionStateEnum.Gestating ? Reproduction.None : ToNextState(date);
+            return ActualState.State != ReproductionStateEnum.Gestating || this == None ? Reproduction.None : ToNextState(date);
         }
 
         /// <summary>
@@ -162,11 +172,11 @@ namespace HerdManagement.Domain.Reproduction.ValueObjects
         /// <returns></returns>
         public Reproduction ToAborted(DateTime date)
         {
-            if (ActualState.State != ReproductionStateEnum.Initial && ActualState.State != ReproductionStateEnum.Gestating)
+            if((ActualState.State != ReproductionStateEnum.Initial && ActualState.State != ReproductionStateEnum.Gestating) || this == None)
             {
                 return Reproduction.None;
             }
-            return new Reproduction(Female, Male, date, Type, ReproductionStateEnum.Aborted, Commentary);
+            return new Reproduction(Female, Male, date, Type, States.Append(new ReproductionState(ReproductionStateEnum.Aborted, date)), Commentary);
         }
 
         /// <summary>
@@ -179,10 +189,10 @@ namespace HerdManagement.Domain.Reproduction.ValueObjects
             switch (ActualState.State)
             {
                 case ReproductionStateEnum.Initial when date > ActualState.Date:
-                    return new Reproduction(Female, Male, date, Type, ReproductionStateEnum.Gestating, Commentary);
+                    return new Reproduction(Female, Male, date, Type, States.Append(new ReproductionState(ReproductionStateEnum.Gestating, date)), Commentary);
 
                 case ReproductionStateEnum.Gestating when date.Subtract(ActualState.Date) >= Female.Breed.Specie.PregnancyDuration:
-                    return new Reproduction(Female, Male, date, Type, ReproductionStateEnum.Complete, Commentary);
+                    return new Reproduction(Female, Male, date, Type, States.Append(new ReproductionState(ReproductionStateEnum.Complete, date)), Commentary);
 
                 case ReproductionStateEnum.Complete:
                     return this;
