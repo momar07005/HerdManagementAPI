@@ -29,14 +29,14 @@ namespace HerdManagement.Domain.Reproduction.Entities
         }
 
         /// <summary>
-        /// Initialize a reproduction between male et female
+        /// Indicates that the female has been mated by the given male
         /// </summary>
         /// <param name="male"></param>
         /// <param name="date"></param>
         /// <param name="type"></param>
         /// <param name="status"></param>
         /// <param name="commentary"></param>
-        /// <returns>A correct reproduction object if possible. Otherwise return a default one</returns>
+        /// <returns>A correct reproduction object with initial state if possible. Otherwise return a default one</returns>
         public ValueObjects.Reproduction HasBeenMated(Male male, DateTime date,ReproductionTypeEnum type,
                                                       ReproductionStateEnum status,string commentary)
         {

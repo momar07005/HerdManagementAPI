@@ -9,11 +9,6 @@ namespace HerdManagement.Domain.Reproduction.Entities
 {
     public abstract class Animal : AuditableEntity
     {
-        protected Animal()
-        {
-
-        }
-
         public virtual string Name { get; set; }
         public virtual int Number { get; set; }
         public virtual SexEnum Sex { get; set; }

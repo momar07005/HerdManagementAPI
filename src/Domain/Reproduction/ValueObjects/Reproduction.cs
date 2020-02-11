@@ -84,7 +84,7 @@ namespace HerdManagement.Domain.Reproduction.ValueObjects
         //}
 
         /// <summary>
-        ///Create a reproduction with initial state.
+        ///Creates a reproduction with initial state.
         /// </summary>
         /// <param name="female">The female.</param>
         /// <param name="male">The male.</param>
